@@ -45,6 +45,7 @@ def extract_m_bias(file_path):
         plt.subplot(subplot)
         plt.ylabel("Percent methylation")
         plt.plot(x, y, line)
+        plt.xlim(1,150)
         plt.grid(True)
         plt.minorticks_on()
         subplot += 1
