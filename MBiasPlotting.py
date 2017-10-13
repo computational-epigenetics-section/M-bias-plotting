@@ -34,7 +34,6 @@ def extract_m_bias(file_path, plot_title):
     print("CpG data extracted")
 
     x = np.arange(1, len(data['R1']) + 1, 1)
-    print(x)
 
     subplot = 211
     for key, line in zip(['R1', 'R2'], ['b--', 'r--']):
@@ -51,7 +50,8 @@ def extract_m_bias(file_path, plot_title):
         subplot += 1
 
     plt.xlabel("Base pair position")
-    plt.show()
+    output_name = plot_title + "_m-bias_plot.png"
+    plt.savefig(output_name)
 
 
 if __name__ == "__main__":
