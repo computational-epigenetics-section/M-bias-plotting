@@ -1,14 +1,13 @@
 #!/usr/bin/env/python
 import sys
+import os
+from os.path import basename
 from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
-# import seaborn as sns
-# sns.set_style("darkgrid")
 
-input_file = sys.argv[1]
 
-def extract_m_bias(file_path):
+def extract_m_bias(file_path, plot_title):
 
     start_reading = False
 
@@ -42,6 +41,7 @@ def extract_m_bias(file_path):
         y = data[key]
 
         plt.figure(1, figsize=(10,6))
+        plt.title(plot_title)
         plt.subplot(subplot)
         plt.ylabel("Percent methylation")
         plt.plot(x, y, line)
@@ -53,5 +53,9 @@ def extract_m_bias(file_path):
     plt.xlabel("Base pair position")
     plt.show()
 
+
 if __name__ == "__main__":
-    extract_m_bias(input_file)
+
+    input_file = sys.argv[1]
+    file_name = os.path.splitext(basename(input_file))[0]
+    extract_m_bias(input_file, file_name)
